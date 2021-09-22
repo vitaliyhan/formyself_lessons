@@ -10,10 +10,7 @@ class MainController extends Controller
 {
     public function index()
     {
-        $tag = new Tag();
-        $tag->title = 'Привет';
-        $tag->save();
-        dd(Tag::all());
+
         return view('admin.index');
     }
 }
