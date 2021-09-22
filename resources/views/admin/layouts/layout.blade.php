@@ -219,7 +219,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('categories.index')}}" class="nav-link">
+                                <a href="{{route('categories.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Новая категория</p>
                                 </a>
@@ -235,8 +235,26 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-@yield('content')
-<!-- /.content-wrapper -->
+    <div class="content-wrapper  p-4">
+        <container>
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="list-unstyled">
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+        </container>
+        @yield('content')
+    </div>
+    <!-- /.content-wrapper -->
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">

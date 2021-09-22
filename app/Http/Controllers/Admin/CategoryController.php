@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required'
+        ]);
+        Category::create($request->all());
+//        $request->session()->flash('success', 'Категория добавлена');
+        return redirect()->route('categories.index')->with('success', 'Категория добавлена');
     }
 
 
@@ -49,7 +54,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        dd('edit');
+
     }
 
     /**
@@ -72,6 +77,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        dd('destroy');
+        Category::find($id)->delete();
+        return redirect()->route('categories.index');
     }
 }
