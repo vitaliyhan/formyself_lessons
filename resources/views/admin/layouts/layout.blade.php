@@ -21,9 +21,6 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ url('/admin/') }}" class="nav-link">Главная</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
-            </li>
         </ul>
 
         <!-- Right navbar links -->
@@ -226,6 +223,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item has-treeview menu-open">
+                        <a href="{{ url('/admin/tags') }}" class="nav-link">
+                            <i class="nav-icon fas fa-tags"></i>
+                            <p>
+                                Теги
+                            </p>
+                            <i class="right fas fa-angle-left"></i>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('tags.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Список тегов</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('tags.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Новая тег</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                 </ul>
             </nav>
@@ -252,7 +272,10 @@
                 </div>
             @endif
         </container>
+
         @yield('content')
+
+        {{--   конец ---}}
     </div>
     <!-- /.content-wrapper -->
 
