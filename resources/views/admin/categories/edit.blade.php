@@ -9,12 +9,12 @@
                     <div class="col-sm-6">
                         <h1>Главная</h1>
                     </div>
-{{--                    <div class="col-sm-6">--}}
-{{--                        <ol class="breadcrumb float-sm-right">--}}
-{{--                            <li class="breadcrumb-item"><a href="#">Home</a></li>--}}
-{{--                            <li class="breadcrumb-item active">Blank Page</li>--}}
-{{--                        </ol>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="col-sm-6">--}}
+                    {{--                        <ol class="breadcrumb float-sm-right">--}}
+                    {{--                            <li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+                    {{--                            <li class="breadcrumb-item active">Blank Page</li>--}}
+                    {{--                        </ol>--}}
+                    {{--                    </div>--}}
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -25,27 +25,27 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Добавить категорию</h3>
+                    <h3 class="card-title">Изменить категорию</h3>
 
-{{--                    <div class="card-tools">--}}
-{{--                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">--}}
-{{--                            <i class="fas fa-minus"></i>--}}
-{{--                        </button>--}}
-{{--                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">--}}
-{{--                            <i class="fas fa-times"></i>--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
+                    {{--                    <div class="card-tools">--}}
+                    {{--                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">--}}
+                    {{--                            <i class="fas fa-minus"></i>--}}
+                    {{--                        </button>--}}
+                    {{--                        <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">--}}
+                    {{--                            <i class="fas fa-times"></i>--}}
+                    {{--                        </button>--}}
+                    {{--                    </div>--}}
                 </div>
 
                 <!-- form start -->
-                <form method="post" action="{{ route('categories.store') }}">
+                <form method="post" action="{{ route('categories.update', ['category'=>$category->id] )}}">
                     @csrf
+                    @method('put')
                     <div class="card-body">
                         <div class="form-group">
                             <label for="title">Имя</label>
                             <input type="text" name="title" class="form-control  @error('title') is-invalid @enderror "
-                                   id="title"
-                                   placeholder="Название">
+                                   id="title" value="{{ $category->title }}">
                         </div>
                         {{--                        <div class="form-group">--}}
                         {{--                            <label for="exampleInputPassword1">Password</label>--}}
@@ -59,10 +59,10 @@
 
                 </form>
                 <!-- /.card-body -->
-{{--                <div class="card-footer clearfix">--}}
+            {{--                <div class="card-footer clearfix">--}}
 
             {{--                </div>--}}
-                <!-- /.card-footer-->
+            <!-- /.card-footer-->
             </div>
             <!-- /.card -->
 

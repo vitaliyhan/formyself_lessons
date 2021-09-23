@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(2);
+        $categories = Category::Paginate(10);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -54,7 +54,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-
+        $category = Category::find($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -66,7 +67,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required'
+        ]);
+        Category::find($id)->update($request->all());
+
+//        $request->session()->flash('success', 'Категория обновлена');
+        return redirect()->route('categories.index')->with('success', 'Категория добавлена');
     }
 
     /**
@@ -78,6 +85,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::find($id)->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Категория удалена');
     }
 }

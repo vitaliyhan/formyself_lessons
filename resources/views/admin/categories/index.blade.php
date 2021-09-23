@@ -83,12 +83,15 @@
                     @else
                         <div>Категорий нет</div>
                     @endif
+                    {{ $categories->links() }}
                 </div>
+
+
             </div>
             <!-- /.card-body -->
-            <div class="card-footer clearfix">
-                {{ $categories->links() }}
-            </div>
+{{--            <div class="card-footer clearfix">--}}
+
+{{--            </div>--}}
             <!-- /.card-footer-->
     </div>
     <!-- /.card -->
