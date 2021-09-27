@@ -1,14 +1,14 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Blank Page</title>
-    <!-- Google Font: Source Sans Pro -->
+    <title>AdminLTE 3 | Fixed Sidebar</title>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/assets/admin/css/admin.css') }}">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
     <!-- Navbar -->
@@ -58,7 +58,7 @@
         {{--                    <a href="#" class="dropdown-item">--}}
         {{--                        <!-- Message Start -->--}}
         {{--                        <div class="media">--}}
-        {{--                            <img src="{{ asset('public/assets/admin/img/user1-128x128.jpg') }}" alt="User Avatar"--}}
+        {{--                            <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar"--}}
         {{--                                 class="img-size-50 mr-3 img-circle">--}}
         {{--                            <div class="media-body">--}}
         {{--                                <h3 class="dropdown-item-title">--}}
@@ -75,7 +75,7 @@
         {{--                    <a href="#" class="dropdown-item">--}}
         {{--                        <!-- Message Start -->--}}
         {{--                        <div class="media">--}}
-        {{--                            <img src="{{ asset('public/assets/admin/img/user8-128x128.jpg') }}" alt="User Avatar"--}}
+        {{--                            <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar"--}}
         {{--                                 class="img-size-50 img-circle mr-3">--}}
         {{--                            <div class="media-body">--}}
         {{--                                <h3 class="dropdown-item-title">--}}
@@ -92,7 +92,7 @@
         {{--                    <a href="#" class="dropdown-item">--}}
         {{--                        <!-- Message Start -->--}}
         {{--                        <div class="media">--}}
-        {{--                            <img src="{{ asset('public/assets/admin/img/user3-128x128.jpg') }}" alt="User Avatar"--}}
+        {{--                            <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar"--}}
         {{--                                 class="img-size-50 img-circle mr-3">--}}
         {{--                            <div class="media-body">--}}
         {{--                                <h3 class="dropdown-item-title">--}}
@@ -155,7 +155,8 @@
         <!-- Brand Logo -->
         <a href="{{ url('/') }}" class="brand-link">
             <img src="{{ '/public/assets/admin/img/AdminLTELogo.png' }}" alt="AdminLTE Logo"
-                 class="brand-image img-circle elevation-3" style="opacity: .8">
+                 class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
             <span class="brand-text font-weight-light">AdminLTE 3</span>
         </a>
 
@@ -255,35 +256,48 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper  p-4">
-        <container>
-            @if($errors->any())
-                <div class="alert alert-danger">
-                    <ul class="list-unstyled">
-                        @foreach($errors->all() as $error)
-                            <li>{{$error}}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-            @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-        </container>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
 
-        @yield('content')
 
-        {{--   конец ---}}
+        <!-- Main content -->
+        <section class="content">
+            <container>
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="list-unstyled">
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </container>
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </section>
+
+
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.1.0
+            <b>
+                Version
+            </b> 3.2.0-rc
         </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>
+            Copyright &copy; 2014-2021
+            <a href="https://adminlte.io">AdminLTE.io</a>
+            .</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
