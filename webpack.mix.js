@@ -14,12 +14,23 @@ const mix = require('laravel-mix');
 mix.styles([
     'resources/assets/admin/plugins/fontawesome-free/css/all.min.css',
     'resources/assets/admin/css/adminlte.min.css',
+    'resources/assets/admin/css/summernote.min.css',
+    'resources/assets/admin/css/select2.min.css',
+    'resources/assets/admin/css/select2.bootstrap.css',
+
+
 ], 'public/assets/admin/css/admin.css');
 mix.scripts([
     'resources/assets/admin/plugins/jquery/jquery.min.js',
     'resources/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js',
     'resources/assets/admin/js/adminlte.min.js',
+    'resources/assets/admin/js/summernote.min.js',
+    'resources/assets/admin/js/summernote_init.js',
+    'resources/assets/admin/js/select2.full.min.js',
+    'resources/assets/admin/js/select2_init.js',
+
     'resources/assets/admin/js/demo.js',
+
 ], 'public/assets/admin/js/admin.js');
 mix.copyDirectory('resources/assets/admin/plugins/fontawesome-free/webfonts',
     'public/assets/admin/webfonts');
