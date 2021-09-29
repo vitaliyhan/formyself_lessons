@@ -38,7 +38,7 @@
             </div>
 
             <!-- form start -->
-            <form method="post" action="{{ route('posts.store') }}">
+            <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -59,22 +59,20 @@
                     </div>
                     <div class="form-group">
                         <label>Категория</label>
-                        <select class="form-control" id="category_id" name="category_id">
-{{--                            @foreach()--}}
-{{--                            @endforeach--}}
-                            <option>option 5</option>
+                        <select class="form-control select2bs4"  id="category_id" name="category_id" style="width: 100%">
+                            @foreach($categories as $key => $value)
+                                <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="tags">Теги</label>
-                        <select class="select2" name="tags[]" multiple="multiple" id="tags" data-placeholder="Выбор тегов" style="width: 100%;">
-                            <option>Alabama</option>
-                            <option>Alaska</option>
-                            <option>California</option>
-                            <option>Delaware</option>
-                            <option>Tennessee</option>
-                            <option>Texas</option>
-                            <option>Washington</option>
+                        <select class="select2" name="tags[]" multiple="multiple" id="tags"
+                                data-placeholder="Выбор тегов" style="width: 100%;">
+
+                            @foreach($tags as $key => $value)
+                                <option value="{{ $key }}">{{ $value }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
