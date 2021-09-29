@@ -49,17 +49,17 @@
                     </div>
                     <div class="form-group">
                         <label for="description">Цитата</label>
-                        <textarea class="form-control" rows="2" name="description" id="description"
+                        <textarea class="form-control @error('description') is-invalid @enderror" rows="2" name="description" id="description"
                                   placeholder="Цитата"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="content">Контент</label>
-                        <textarea class="form-control " rows="5" name="content" id="content"
+                        <textarea class="form-control @error('content') is-invalid @enderror" rows="5" name="content" id="content"
                                   placeholder="Контент"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Категория</label>
-                        <select class="form-control select2bs4"  id="category_id" name="category_id" style="width: 100%">
+                        <select class=" select2bs4  @error('category_id') is-invalid @enderror"  id="category_id" name="category_id" style="width: 100%">
                             @foreach($categories as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -67,7 +67,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tags">Теги</label>
-                        <select class="select2" name="tags[]" multiple="multiple" id="tags"
+                        <select class="select2 @error('tags') is-invalid @enderror" name="tags[]" multiple="multiple" id="tags"
                                 data-placeholder="Выбор тегов" style="width: 100%;">
 
                             @foreach($tags as $key => $value)
@@ -79,7 +79,7 @@
                         <label for="thumbnail">Изображение</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="thumbnail" name="thumbnail">
+                                <input type="file" class="custom-file-input @error('thumbnail') is-invalid @enderror" id="thumbnail" name="thumbnail">
                                 <label class="custom-file-label" for="thumbnail">Выберите картинку</label>
                             </div>
 

@@ -41,11 +41,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $request->validate([
-            'title' => 'required'
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'nullable|image'
         ]);
-//        Post::create($request->all());
+        if ($request->hasFile('thumbnail')) {
+            $folder = date('Y-m-d');
+            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
+        }
+        $post = Post::create($data);
+        $post->tags()->sync($request->tags);
 //        $request->session()->flash('success', 'Категория добавлена');
         return redirect()->route('posts.index')->with('success', 'Статья добавлена');
     }

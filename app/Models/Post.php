@@ -10,6 +10,8 @@ class Post extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $guarded = [];
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
