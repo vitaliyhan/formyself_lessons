@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -48,10 +49,8 @@ class PostController extends Controller
             'category_id' => 'required|integer',
             'thumbnail' => 'nullable|image'
         ]);
-        if ($request->hasFile('thumbnail')) {
-            $folder = date('Y-m-d');
-            $data['thumbnail'] = $request->file('thumbnail')->store("images/{$folder}");
-        }
+        $data['thumbnail'] = Post::uploadImage($request);
+
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 //        $request->session()->flash('success', 'Категория добавлена');
@@ -67,8 +66,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-//        $category = Category::find($id);
-        return view('admin.posts.edit');
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        $post = Post::find($id);
+        return view('admin.posts.edit', compact('categories', 'tags', 'post'));
     }
 
     /**
@@ -80,13 +81,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required'
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'nullable|image'
         ]);
+        $post = Post::find($id);
 
 
-//        $request->session()->flash('success', 'Категория обновлена');
-        return redirect()->route('posts.index')->with('success', 'Статья добавлена');
+        $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        $post->update($data);
+        $post->tags()->sync($request->tags);
+        return redirect()->route('posts.index')->with('success', 'Статья изменена');
+
+
     }
 
     /**
