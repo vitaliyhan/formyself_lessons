@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin.index');
     Route::resource('/categories', \App\Http\Controllers\Admin\CategoryController::class);
@@ -24,3 +24,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::delete('/posts_img/{post}/delete_img', [\App\Http\Controllers\Admin\PostController::class, 'deleteImg'])->name('posts_img.delete_img');
     Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);
 });
+
+Route::get('/register', [\App\Http\Controllers\UserController::class, 'create'])->name('register.create');
+Route::post('/register', [\App\Http\Controllers\UserController::class, 'store'])->name('register.store');
