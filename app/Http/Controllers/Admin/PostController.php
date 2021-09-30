@@ -103,7 +103,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::find($id)->delete();
+        $post = Post::find($id);
+        $post->tags()->sync([]);
+        $post::deleteImage($post->thumbnail);
+        $post->delete();
         return redirect()->route('posts.index')->with('success', 'Статья удалена');
     }
 
