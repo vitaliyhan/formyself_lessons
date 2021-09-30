@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <img src="{{ $post->getImage() }}" alt="">
+                        <img src="{{ $post->getImage() }}" alt="" style="max-height: 300px">
                     </div>
                     <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                 </div>

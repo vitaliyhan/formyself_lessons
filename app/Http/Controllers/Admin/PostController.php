@@ -89,14 +89,10 @@ class PostController extends Controller
             'thumbnail' => 'nullable|image'
         ]);
         $post = Post::find($id);
-
-
         $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
         $post->update($data);
         $post->tags()->sync($request->tags);
         return redirect()->route('posts.index')->with('success', 'Статья изменена');
-
-
     }
 
     /**
