@@ -45,6 +45,14 @@ class Post extends Model
         return null;
     }
 
+    public static function deleteImage($image)
+    {
+        if ($image) {
+            Storage::delete($image);
+        }
+        return 'ok';
+    }
+
     public function getImage()
     {
         if (!$this->thumbnail) {

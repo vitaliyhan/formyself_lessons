@@ -66,7 +66,7 @@
                                 name="category_id" style="width: 100%">
                             @foreach($categories as $key => $value)
                                 <option value="{{ $key }}"
-                                        @if($key== $post->category_id) selected @endif >{{ $value }}</option>
+                                        @if($key == $post->category_id) selected @endif >{{ $value }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -94,15 +94,32 @@
 
                         </div>
                     </div>
-                    <div class="form-group">
-                        <img src="{{ $post->getImage() }}" alt="" style="max-height: 300px">
-                    </div>
+
+                    @if($post->thumbnail)
+                        <div class="form-group">
+                            <img src="{{ $post->getImage() }}" alt="" style="max-height: 300px">
+                            <div class="btn bg-gradient-danger"
+                                 onclick="if(confirm('Удалить изображение?')){
+                                     $.ajax({
+                                     'url': '{{ route('posts_img.delete_img',['post'=> $post->id]) }}' + id,
+                                     'type': 'DELETE',
+                                     headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                                     }).always(function() {
+                                     window.location = window.location.href;
+                                     });
+                                     }">
+                                <i class="far fa-trash-alt"></i>
+                            </div>
+
+                        </div>
+                    @endif
                     <button type="submit" class="btn btn-primary">Сохранить изменения</button>
                 </div>
-                <!-- /.card-body -->
-
-
             </form>
+
+            <!-- /.card-body -->
+
+
             <!-- /.card-body -->
         {{--                <div class="card-footer clearfix">--}}
 

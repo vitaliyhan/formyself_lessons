@@ -106,4 +106,13 @@ class PostController extends Controller
         Post::find($id)->delete();
         return redirect()->route('posts.index')->with('success', 'Статья удалена');
     }
+
+    public function deleteImg($id)
+    {
+        $post = Post::find($id);
+        Post::deleteImage($post->thumbnail);
+        $post->thumbnail = null;
+        $post->save();
+        return back()->with('success', 'Фотография удалена');
+    }
 }
