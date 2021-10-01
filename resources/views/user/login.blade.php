@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Registration Page</title>
+    <title>AdminLTE 3 | Войти</title>
 
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
@@ -17,7 +17,7 @@
 
     <div class="card">
         <div class="card-body register-card-body">
-            <p class="login-box-msg">Регистрация</p>
+            <p class="login-box-msg">Войти</p>
             <container>
                 @if($errors->any())
                     <div class="alert alert-danger">
@@ -28,22 +28,21 @@
                         </ul>
                     </div>
                 @endif
+
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 @if(session()->has('success'))
                     <div class="alert alert-success">
                         {{ session('success') }}
                     </div>
                 @endif
             </container>
-            <form action="{{ route('register.store') }}" method="post">
+            <form action="{{ route('login') }}" method="post">
                 @csrf
-                <div class="input-group mb-3">
-                    <input type="text" name="name" class="form-control" placeholder="Имя" value="{{  old('name') }}">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
-                        </div>
-                    </div>
-                </div>
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" name="email" placeholder="Email"
                            value="{{  old('email') }}">
@@ -62,27 +61,19 @@
                     </div>
                 </div>
 
-                <div class="input-group mb-3">
-                    <input type="password" name="password_confirmation" class="form-control"
-                           placeholder="Повторить пароль">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row justify-content-center">
 
                     <!-- /.col -->
                     <div class="col-8">
-                        <button type="submit" class="btn btn-primary btn-block">Зарегистироваться</button>
+                        <button type="submit" class="btn btn-primary btn-block">Войти</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
 
-            <a href="{{ route('login.create') }}" class="text-center">Уже зарегистрированы?</a>
+            <a href="{{ route('register.create') }}" class="text-center">Зарегистрироватся</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

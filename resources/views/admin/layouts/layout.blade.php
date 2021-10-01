@@ -47,6 +47,11 @@
                     </form>
                 </div>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('logout') }}" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </li>
 
             <!-- Messages Dropdown Menu -->
         {{--            <li class="nav-item dropdown">--}}
