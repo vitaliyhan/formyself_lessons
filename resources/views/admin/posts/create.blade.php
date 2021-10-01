@@ -45,17 +45,17 @@
                         <label for="title">Название</label>
                         <input type="text" name="title" class="form-control  @error('title') is-invalid @enderror "
                                id="title"
-                               placeholder="Название">
+                               placeholder="Название" value="{{ old('title') }}">
                     </div>
                     <div class="form-group">
                         <label for="description">Цитата</label>
                         <textarea class="form-control @error('description') is-invalid @enderror" rows="2" name="description" id="description"
-                                  placeholder="Цитата"></textarea>
+                                  placeholder="Цитата">{{ old('description') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="content">Контент</label>
-                        <textarea class="form-control @error('content') is-invalid @enderror" rows="5" name="content" id="content"
-                                  placeholder="Контент"></textarea>
+                        <textarea class="form-control summernote @error('content') is-invalid @enderror" rows="5" name="content" id="content"
+                                  placeholder="Контент">{{ old('content') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label>Категория</label>

@@ -34,6 +34,8 @@ mix.scripts([
 ], 'public/assets/admin/js/admin.js');
 mix.copyDirectory('resources/assets/admin/plugins/fontawesome-free/webfonts',
     'public/assets/admin/webfonts');
+mix.copyDirectory('resources/assets/admin/css/font',
+    'public/assets/admin/css/font');
 mix.copyDirectory('resources/assets/admin/img',
     'public/assets/admin/img');
 mix.copy('resources/assets/admin/js/adminlte.min.js.map',

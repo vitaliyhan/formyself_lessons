@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Контент</label>
-                        <textarea class="form-control @error('content') is-invalid @enderror" rows="5" name="content"
+                        <textarea class="form-control summernote @error('content') is-invalid @enderror" rows="5" name="content"
                                   id="content"
                         >{{ $post->content }}</textarea>
                     </div>
