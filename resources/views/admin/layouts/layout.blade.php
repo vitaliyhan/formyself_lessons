@@ -338,5 +338,74 @@
 
 <!-- jQuery -->
 <script src="{{ asset('public/assets/admin/js/admin.js') }}"></script>
+<script src="{{ asset('public/assets/admin/ckeditor5/build/ckeditor.js') }}"></script>
+<script src="{{ asset('public/assets/admin/ckfinder/ckfinder.js') }}"></script>
+
+<script>
+    ClassicEditor
+    ClassicEditor
+        .create(document.querySelector('#content'), {
+
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'CKFinder',
+                    'blockQuote',
+                    'insertTable',
+                    'mediaEmbed',
+                    'undo',
+                    'redo',
+                    'code'
+                ]
+            },
+            language: 'ru',
+            image: {
+                toolbar: [
+                    'imageTextAlternative',
+                    'imageStyle:inline',
+                    'imageStyle:block',
+                    'imageStyle:side'
+                ]
+            },
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+            licenseKey: '',
+
+
+        })
+        .then(editor => {
+            window.editor = editor;
+
+
+        })
+        .catch(error => {
+            console.error('Oops, something went wrong!');
+            console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+            console.warn('Build id: umfbj8toecdr-cqjpw72mwlin');
+            console.error(error);
+        });
+    ClassicEditor
+        .create(document.querySelector('#description'), {
+            toolbar: ['heading', '|', 'bold', 'italic', '|', 'undo', 'redo']
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
+</script>
 </body>
 </html>

@@ -20,7 +20,7 @@
 //# sourceMappingURL=summernote.min.js.map
 
 jQuery(document).ready(function() {
-    $('.summernote').summernote();
+    // $('.summernote32').summernote();
 });
 
 /*! Select2 4.0.13 | https://github.com/select2/select2/blob/master/LICENSE.md */
