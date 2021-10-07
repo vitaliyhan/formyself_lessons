@@ -26,17 +26,7 @@ $config = array();
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_authentication
 
 $config['authentication'] = function () {
-    require _DIR_.'/bootstrap/autoload.php';
-    $app = require_once _DIR_.'/bootstrap/app.php';
-
-    $app->make('Illuminate\Contracts\Http\Kernel')
-        ->handle(Illuminate\Http\Request::capture());
-    if (Auth::check()) {
-        return true;
-    } else {
-        return true;
-    }
-
+    return true;
 };
 
 /*============================ License Key ============================================*/
