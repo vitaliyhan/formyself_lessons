@@ -16,7 +16,8 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" data-enable-remember="true" href="#" role="button"><i
+                        class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ url('/admin/') }}" class="nav-link">Главная</a>
@@ -158,7 +159,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="{{ url('/') }}" class="brand-link">
+        <a href="{{ route('admin.index') }}" class="brand-link">
             <img src="{{ '/public/assets/admin/img/AdminLTELogo.png' }}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
@@ -206,16 +207,18 @@
                         </a>
 
                     </li>
-                    <li class="nav-item has-treeview menu-open">
+
+                    <li class="nav-item menu-open">
                         <a href="{{ url('/admin/category') }}" class="nav-link">
                             <i class="nav-icon fas fa-archive"></i>
                             <p>
                                 Категории
+                                <i class="fas fa-angle-left right"></i>
+                                {{--                                <span class="badge badge-info right">6</span>--}}
                             </p>
-                            <i class="right fas fa-angle-left"></i>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a href="{{route('categories.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Список категорий</p>
@@ -229,16 +232,18 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
+
+                    <li class="nav-item menu-open">
                         <a href="{{ url('/admin/tags') }}" class="nav-link">
                             <i class="nav-icon fas fa-tags"></i>
                             <p>
                                 Теги
+                                <i class="fas fa-angle-left right"></i>
+                                {{--                                <span class="badge badge-info right">6</span>--}}
                             </p>
-                            <i class="right fas fa-angle-left"></i>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a href="{{route('tags.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Список тегов</p>
@@ -252,16 +257,18 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
+
+                    <li class="nav-item menu-open">
                         <a href="{{ url('/admin/posts') }}" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
                                 Статьи
+                                <i class="fas fa-angle-left right"></i>
+                                {{--                                <span class="badge badge-info right">6</span>--}}
                             </p>
-                            <i class="right fas fa-angle-left"></i>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a href="{{route('posts.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Список статей</p>
@@ -275,6 +282,7 @@
                             </li>
                         </ul>
                     </li>
+
 
                 </ul>
             </nav>
@@ -418,7 +426,7 @@
             console.error(error);
         });
 
-    $(document).ready(function (){
+    $(document).ready(function () {
         bsCustomFileInput.init();
     });
 </script>
