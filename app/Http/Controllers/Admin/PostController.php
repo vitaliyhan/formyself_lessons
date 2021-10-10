@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category','tags')->paginate(10);
+        $posts = Post::with('category', 'tags')->paginate(10);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -89,7 +89,10 @@ class PostController extends Controller
             'thumbnail' => 'nullable|image'
         ]);
         $post = Post::find($id);
-        $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        if ($request->thumbnail) {
+            $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
+        }
+
         $post->update($data);
         $post->tags()->sync($request->tags);
         return redirect()->route('posts.index')->with('success', 'Статья изменена');

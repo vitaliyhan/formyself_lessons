@@ -305,6 +305,11 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </container>
             <div class="container-fluid">
                 @yield('content')
@@ -343,7 +348,6 @@
 
 <script>
     ClassicEditor
-    ClassicEditor
         .create(document.querySelector('#content'), {
 
             toolbar: {
@@ -371,7 +375,7 @@
             language: 'ru',
             image: {
                 // You need to configure the image toolbar, too, so it uses the new style buttons.
-                toolbar: [ 'imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight' ],
+                toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
 
                 styles: [
                     // This option is equal to a situation where no style is applied.
@@ -413,6 +417,10 @@
         .catch(function (error) {
             console.error(error);
         });
+
+    $(document).ready(function (){
+        bsCustomFileInput.init();
+    });
 </script>
 </body>
 </html>

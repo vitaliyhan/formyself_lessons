@@ -84,7 +84,13 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        Tag::find($id)->delete();
+        $tag = Tag::find($id);
+        $count = $tag->posts->count();
+        if ($count) {
+            return redirect()->route('tags.index')->with('error', 'Ошибка! Тег "' . $tag->title . '" используются в постах. Постов - ' . $count . ' шт');
+        }
+        $tag->delete();
+
         return redirect()->route('tags.index')->with('success', 'Тег удален');
     }
 }

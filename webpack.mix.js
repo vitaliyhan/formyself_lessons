@@ -28,6 +28,7 @@ mix.scripts([
     'resources/assets/admin/js/summernote_init.js',
     'resources/assets/admin/js/select2.full.min.js',
     'resources/assets/admin/js/select2_init.js',
+    'resources/assets/admin/js/bs-custom-file-input.min.js',
 
     'resources/assets/admin/js/demo.js',
 

@@ -13,6 +13,7 @@ class CategorySeed extends Seeder
      */
     public function run()
     {
-         \App\Models\Category::factory(20)->create();
+         \App\Models\Category::factory()->create(['title'=>'Путешествия']);
+         \App\Models\Category::factory()->create(['title'=>'Кино']);
     }
 }
