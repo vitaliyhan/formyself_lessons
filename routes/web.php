@@ -13,12 +13,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Front
 Route::get('/', [\App\Http\Controllers\PostController::class, 'index'])->name('home');
 Route::get('/article/{slug}', [\App\Http\Controllers\PostController::class, 'show'])->name('posts.single');
 Route::get('/category/{slug}', [\App\Http\Controllers\CategoryController::class, 'show'])->name('categories.single');
 Route::get('/tag/{slug}', [\App\Http\Controllers\TagController::class, 'show'])->name('tag.single');
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 
+// Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', [\App\Http\Controllers\Admin\MainController::class, 'index'])->name('admin.index');
     Route::resource('/categories', \App\Http\Controllers\Admin\CategoryController::class);
@@ -27,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('/posts', \App\Http\Controllers\Admin\PostController::class);
 });
 
+// Login-Register
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [\App\Http\Controllers\UserController::class, 'create'])->name('register.create');
     Route::post('/register', [\App\Http\Controllers\UserController::class, 'store'])->name('register.store');
