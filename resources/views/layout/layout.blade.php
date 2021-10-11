@@ -44,7 +44,7 @@
                 </button>
                 <a class="navbar-brand" href="{{ route('home') }}">
                     <img
-                        src="assets/front/images/version/market-logo.png"
+                        src="{{asset('/assets/front/images/version/market-logo.png')}}"
                         alt="">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
